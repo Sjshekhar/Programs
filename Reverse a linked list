@@ -1,0 +1,60 @@
+
+import java.util.*;
+
+
+class Node
+{
+  Node next = null;
+  int data;
+
+  public Node(int d) {
+    data = d;
+  }
+}
+
+public class reverseLinkedList{
+
+  static Node top;
+
+  public static void makeLinkedList(int n)
+  {
+     Node t = new Node(n);
+     t.next = top;
+     top = t;
+  }
+
+
+  public static Node reverseLinkedList(Node node)
+  {
+     Node previous = null;
+     Node current = node;
+     Node next = null;
+
+     while(current != null) {
+       next = current.next;
+       current.next = previous;
+       previous = current;
+       current = next;
+      }
+
+    node = previous;
+    return node;
+
+  }
+
+   public static void main(String[] args)
+	{
+
+     makeLinkedList(1);
+     makeLinkedList(2);
+     makeLinkedList(3);
+     makeLinkedList(4);
+     makeLinkedList(5);
+     Node node = reverseLinkedList(top);
+
+      while(node != null) {
+       System.out.println(node.data);
+       node = node.next;
+      }
+	}
+}
